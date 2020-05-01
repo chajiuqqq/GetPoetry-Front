@@ -4,13 +4,23 @@ const path=require('path')
 
 app.use(express.static(__dirname))
 
-app.get('/:name',(req,res) => {
-	var url=path.join(__dirname,'view',req.params.name+'.html')
-	console.log(url)
+
+app.get('/',(req,res) => {
+	var url=path.join(__dirname,'view','flower.html')
+	// console.log(url)
 	res.sendFile(url)
 })
 
 
-app.listen(8090,()=>{
+app.get('/:name',(req,res) => {
+	let name=req.params.name
+	var url=path.join(__dirname,'view',name+'.html')
+	// console.log(url)
+	
+	res.sendFile(url)
+})
+
+
+app.listen(8088,()=>{
 	console.log('one request')
 })
