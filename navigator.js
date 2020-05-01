@@ -13,9 +13,9 @@ Vue.component('common-navigator',{
 		<img src="/photo/1.png" style="float:left;margin-left:12rem;
 		margin-top:0.5rem;width:6rem;height:5rem;">
 					
-		  <el-menu-item index="1" ><a href="main.html">{{text1}}</a></el-menu-item>
+		  <el-menu-item index="1" ><a href="main">{{text1}}</a></el-menu-item>
 		  
-		  <el-menu-item index="3" ><a href="sort.html">{{text3}}</a></el-menu-item>
+		  <el-menu-item index="3" ><a href="sort">{{text3}}</a></el-menu-item>
 		  <el-menu-item index="5" style="float: right;margin-right: 17rem" @click="jump">{{text5}}&nbsp;<span class="demo-basic--circle"><span class="block"><el-avatar :size="26" :src="url" style="margin-bottom: 0.8rem"></el-avatar></span></span></el-menu-item>
 		</el-menu>
 				
@@ -55,9 +55,9 @@ Vue.component('common-navigator',{
 					  jump(){
 					  	if(this.text5=="登录")
 					  	{
-							window.location.href='login.html' ;
+							window.location.href='login' ;
 					  	}else{
-							window.location.href='usercenter.html' ;
+							window.location.href='usercenter' ;
 					  	}
 					  }
 					},

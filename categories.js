@@ -21,7 +21,7 @@
 			},
 			methods:{
 				toSortPage(e){
-					window.location.href='sort.html?bid='+e.currentTarget.getAttribute('buttonid');
+					window.location.href='sort?bid='+e.currentTarget.getAttribute('buttonid');
 				},
 				jumppoem(){
 	

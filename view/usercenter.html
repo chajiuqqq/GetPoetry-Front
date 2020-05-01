@@ -202,7 +202,7 @@ a:active{ color:white; text-decoration:none;}
 					      	
 					      	if(response.data.code == 200){
 					      		
-					      		window.location.href='main.html';
+					      		window.location.href='main';
 					      	}else{
 						  		
 					      	}
@@ -324,7 +324,7 @@ a:active{ color:white; text-decoration:none;}
 				 
 				 },
 				 jumptopoem(e){
-					window.location.href='poem.html?titleid=' + e.currentTarget.getAttribute('titleid');
+					window.location.href='poem?titleid=' + e.currentTarget.getAttribute('titleid');
 				}
 			      
 				},
@@ -359,7 +359,7 @@ a:active{ color:white; text-decoration:none;}
 				       
 						this.nicheng=response.data.data.name;
 			       	}else{
-			       		window.location.href='login.html';
+			       		window.location.href='login';
 			       	}
 			      })
 			      .catch(function (error) { // 请求失败处理

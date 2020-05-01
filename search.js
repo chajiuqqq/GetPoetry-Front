@@ -78,7 +78,7 @@ Vue.component('common-search',{
 						        });
 							}else{
 							var encodename=encodeURI(this.input);
-							window.location.href='search_searchpoem.html?title='+encodename;
+							window.location.href='search_searchpoem?title='+encodename;
 				}
 				},
 			    MouseOver(e){
@@ -122,15 +122,15 @@ Vue.component('common-search',{
 					 }
 				},
 				getsearch(e){
-					window.location.href='search_poem.html?id='+e.target.getAttribute('sid');
+					window.location.href='search_poem?id='+e.target.getAttribute('sid');
 					
 				},
 				getpoem(e){
-					window.location.href='poem.html?titleid='+e.target.getAttribute('pid');
+					window.location.href='poem?titleid='+e.target.getAttribute('pid');
 					
 				},
 				getauthor(e){
-					window.location.href='author.html?aid='+e.target.getAttribute('aid');
+					window.location.href='author?aid='+e.target.getAttribute('aid');
 					
 				}
 			},
