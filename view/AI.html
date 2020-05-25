@@ -202,7 +202,7 @@ a:active{ color:white; text-decoration:none;}
 							}else{
 								  this.pic='';
 							      axios
-							      .post('http://rap2.taobao.org:38080/app/mock/245255/ai/gen',{
+							      .post('/ai/gen',{
 							      	  keys: this.input,
 									  pattern: (this. value1===true)?1:0
 							      })
@@ -226,7 +226,7 @@ a:active{ color:white; text-decoration:none;}
 				},
 				 open() {
 				 	axios
-				      .post('http://rap2.taobao.org:38080/app/mock/245255/api/ai/gen',{
+				      .post('/api/ai/gen',{
 				      	  content:this.poetry
 				      })
 				      .then(response =>
