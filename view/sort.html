@@ -52,7 +52,7 @@ a:active{  text-decoration:none;}
 		<common-navigator active="3"></common-navigator>
 
 		<div style="float:left;margin-top:0rem;margin-left:24rem">
-		<common-search></common-search>
+		<common-search :search="buttoncontent"></common-search>
 		
 		</div >
 
@@ -132,7 +132,8 @@ a:active{  text-decoration:none;}
 					selectedId:117,
 					poetries:null,
 					activeName:'1',
-					tag:'tag：'
+					tag:'tag：',
+					buttoncontent:"搜索诗词"
 				}
 			},
 			methods:{

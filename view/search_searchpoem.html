@@ -153,7 +153,7 @@ a:active{ color:white; text-decoration:none;}
 			<div>
 			<div style="display:inline-block;float:left;margin-top:0rem;margin-left:7%">
 			<el-link type="info"  @click="back" style="float:left;margin-top:1.8rem;font-size:large"><返回</el-link>
-			<common-search :searchinput="content"></common-search>
+			<common-search :searchinput="content" :search="buttoncontent"></common-search>
 			</div>
 					
 					
@@ -164,7 +164,8 @@ a:active{ color:white; text-decoration:none;}
 			data(){
 				return{
 					result:'最佳匹配：',
-					content:''
+					content:'',
+					buttoncontent:"搜索诗词"
 				}
 			},
 			methods:{

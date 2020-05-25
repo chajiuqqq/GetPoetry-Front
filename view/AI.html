@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	
+	<title>AI</title>
+
+	<script src="https://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+	<script src="node_modules/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="node_modules/element-ui/lib/theme-chalk/index.css">
+	<script src="node_modules/element-ui/lib/index.js"></script>
+	<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+	<script type="text/javascript" src="navigator.js"></script>
+	<style>
+html{font-size:62.5%;}
+body {font:normal 100% Arial,sans-serif;font-size:14px; font-size:1.4rem; } 
+img { width:100%; -ms-interpolation-mode: bicubic;} 
+	[v-cloak]{
+		display: none;
+	}
+
+input::-webkit-input-placeholder { 
+    /* WebKit browsers */ 
+    font-size:1.7rem;
+    color: #333;
+    font-family:NSimSun; 
+} 
+input::-moz-placeholder { 
+    /* Mozilla Firefox 19+ */ 
+    font-size:1.7rem;
+    color: #333;
+    font-family:NSimSun;
+} 
+input:-ms-input-placeholder { 
+    /* Internet Explorer 10+ */ 
+    font-size:1.7rem;
+    color: #333;
+    font-family:NSimSun;
+}
+.left{ width:30%; float:left} 
+.right{ width:70%; float:right;}
+
+.middle{
+	display:inline-block;
+	width:60%;
+	height: 5rem;
+	background-color:#5D6146;
+	border-top-left-radius: 1.5rem;
+	border-top-right-radius: 1.5rem;
+	box-shadow-top: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+	box-shadow-left: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+	box-shadow-right: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+	margin-top: 2%;
+	margin-left: 20%;
+	font-family: SimHei ;
+	font-size: 2.5rem;
+	color:white;
+	text-align:center;
+	line-height:5rem;
+}
+.medium{
+	display:inline-block;
+	width:60%;
+	height: 30rem;
+	background-color:#F0EFE2;
+	border-bottom-left-radius: 1.5rem;
+	border-bottom-right-radius: 1.5rem;
+	margin-left: 20%;
+	box-shadow-bottom: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+	box-shadow-left: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+	box-shadow-right: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+}
+.bottom{
+	display:inline-block;
+	width:60%;
+	height: auto;
+	background-color:#F0EFE2;
+	margin-left: 20%;
+	margin-top:2%;
+	border-radius: 1.5rem;
+	box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.1);
+}
+.pic{
+		box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+		border-radius: 4px;
+	}
+
+a{ color:white; text-decoration:none;}
+a:hover{ color:white; text-decoration:none;}
+a:active{ color:white; text-decoration:none;}
+@media screen and (max-device-width: 480px) {
+    #divMain{
+    float: none;
+    width:auto;
+    }
+    #divSidebar {
+    display:none;
+    }
+}
+</style>
+</head>
+<body style="background-color: #E1E0C7">
+	<div>
+	
+		<div class="container" id="container" v-cloak>
+			<div>
+			<common-navigator active="4"></common-navigator>
+			
+				<table style="margin-left:27%;margin-top:1%">
+						<tr>
+								<td style="width:30%;align:center;valign:middle">
+									<el-switch
+										  style="display:inline-block;margin-top:0.4%;margin-left:30%"
+										   on-value="1" off-value="0" v-model="value1"
+										  active-color="#D10101"
+										  inactive-color="#D10101"
+										  active-text="五言"
+										  inactive-text="七言">
+										</el-switch>
+								</td>
+								<td style="width:70%;align:center;valign:middle">
+									<div style="display:inline-block;margin-top:0.8rem;float:left;margin-left:0.5rem;position: relative;">
+									  <el-input placeholder="输入诗词描述"  class="input-with-select"
+									  prefix-icon="el-icon-search" 
+									   v-model="input" 
+									  style="width:40rem;margin-left:1rem;border:0.1rem solid #DF0101;
+									  font-family: NSimSun;">
+									     <el-button slot="append" @click="clicksearch" style="font-family:NSimSun;background-color:#D10101;color:white; "  >
+									     {{search}}</el-button>
+									    </el-input>
+									</div>
+								</td>
+						</tr>
+					
+				</table>	
+
+				<div class="middle">
+				{{result}}
+				</div>
+				<div class="medium">
+				        
+						<div style="height:3rem;"></div>
+			            <div style="text-align:center;line-height:4.5rem;font-family:KaiTi ;font-size:3rem;letter-spacing:8px" v-for="item in shortcontent">
+								{{item}} 
+							</div>		
+				            <div type="text" @click="open" v-if="shortcontent" style="float:left;margin-top:2%;margin-left:50%;position:absolute"><i class="el-icon-picture-outline">&nbsp;<el-link type="primary" style="color:#19537D;font-weight:bold" >-生成图片分享</el-link></i></div>
+
+			             <div style="height:1rem"></div>
+					 
+				</div>
+				
+				<div class="bottom" v-if="pic">
+				<table style="width:100%">
+					<tr>
+						<td style="text-align: center;padding-top: 2%">
+							<img :src="pic" class="pic" style="width:90%;height:auto;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="margin-top:1%;text-align: center;">
+								<a :href="pic" download="诗词拈来"><el-button type="primary" icon="el-icon-download">保存图片</el-button></a>
+							</div>
+						</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+		</div>	
+		</div>
+	
+	
+
+		<script>
+	
+		new Vue({
+			data:{
+					search:"生成诗词",
+					result:"生成结果",
+					 value1: "1",
+				     content:'',
+				     tag:'tag：',
+					 message:"-生成分享",
+					 poetry:null,
+					 shortcontent:null,
+					 input:'',
+					 pic:''
+				
+			},
+			methods:{
+				clicksearch(){
+							if(this.input==''){
+								this.$alert('请输入诗词描述', '警告', {
+						          confirmButtonText: '确定',
+						          callback: action => {
+						            this.$message({
+						              type: 'info',
+						              message: `action: ${ action }`
+						            });
+						          }
+						        });
+							}else{
+								  this.pic='';
+							      axios
+							      .post('http://rap2.taobao.org:38080/app/mock/245255/ai/gen',{
+							      	  keys: this.input,
+									  pattern: (this. value1===true)?1:0
+							      })
+							      .then(response =>
+							      { 
+							      	
+							      	if(response.data.code == 200){
+							      		this.poetry = response.data.ans;
+							      		this.shortcontent=this.poetry.split('|');
+							      	}else{
+							      		alert('输入关键词有误！请重新输入！');
+							      		location.reload();
+
+							      	}
+								
+							      })
+							      .catch(function (error) { // 请求失败处理
+							        console.log(error);
+							      });
+							}
+				},
+				 open() {
+				 	axios
+				      .post('http://rap2.taobao.org:38080/app/mock/245255/api/ai/gen',{
+				      	  content:this.poetry
+				      })
+				      .then(response =>
+				      { 
+				      	
+				      	if(response.data.code == 200){
+				      		this.pic = response.data.data.picLoc;
+				      	}
+				      })
+				      .catch(function (error) { // 请求失败处理
+				        console.log(error);
+				      });
+			      }
+			
+			}
+		}).$mount('#container')
+  	
+		</script>
+</body>
+</html>

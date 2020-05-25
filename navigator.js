@@ -16,6 +16,7 @@ Vue.component('common-navigator',{
 		  <el-menu-item index="1" ><a href="main">{{text1}}</a></el-menu-item>
 		  
 		  <el-menu-item index="3" ><a href="sort">{{text3}}</a></el-menu-item>
+		  <el-menu-item index="4" ><a href="AI">{{text4}}</a></el-menu-item>
 		  <el-menu-item index="5" style="float: right;margin-right: 17rem" @click="jump">{{text5}}&nbsp;<span class="demo-basic--circle"><span class="block"><el-avatar :size="26" :src="url" style="margin-bottom: 0.8rem"></el-avatar></span></span></el-menu-item>
 		</el-menu>
 				
@@ -26,7 +27,7 @@ Vue.component('common-navigator',{
 								text1:'首页',
 								// text2:'诗文',
 								text3:'分类',
-								// text4:'社区',
+								text4:'AI作诗',
 								text5:'登录',
 								url:'/photo/head.png'
 						

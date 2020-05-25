@@ -4,6 +4,7 @@
 
 Vue.component('common-search',{
 	props: ['searchinput'],
+	props: ['search'],
 	template:`<div style="display:inline-block;margin-top:0.8rem;float:left;margin-left:0.5rem;position: relative;">
 					  <el-input @keyup.native="Keyup" placeholder="输入诗词分类或描述"  class="input-with-select"
 					  prefix-icon="el-icon-search" 
@@ -11,7 +12,7 @@ Vue.component('common-search',{
 					  style="width:40rem;margin-left:1rem;border:0.1rem solid #DF0101;
 					  font-family: NSimSun;">
 					     <el-button slot="append" @click="clicksearch" style="font-family:NSimSun;background-color:#D10101;color:white; "  >
-					     搜索诗词</el-button>
+					     {{search}}</el-button>
 					    </el-input>
 					    
 					    <div id="d1"  v-if="show"

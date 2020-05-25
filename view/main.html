@@ -139,14 +139,14 @@ a:active{ color:white; text-decoration:none;}
 			<div style="display:inline-block;margin: 4rem 43%;"><img src="/photo/1.png" style="width:19rem;height:17rem;">
 			</div>
 			<div style="margin-left:35%">
-			<common-search></common-search>
+			<common-search :search="buttoncontent"></common-search>
 			</div>
 			</div>
 			</div>
 			`,
 			data(){
 				return{
-					
+					buttoncontent:"搜索诗词"
 				}
 			},
 			methods:{
